@@ -26,5 +26,7 @@ npm install -g typings chai mocha ts-node node-gyp
 
 lets break that down:
 	`typing & chain & mocka` : unitary tests
+
 	`ts-node`: compile typescript code
+
 	`node-gyp`: compile C++ code
