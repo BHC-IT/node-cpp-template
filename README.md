@@ -10,9 +10,13 @@
 
 # Command
 `npm start`: run the project in prod mode
+
 `npm run dev`: run the project in dev mode with nodemon
+
 `npm run build`: build the project
+
 `npm run clean`: clear the project. delete `dist` && `build` path
+
 `npm run test`: launch unary test
 
 # Dependecies
