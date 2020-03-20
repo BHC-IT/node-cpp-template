@@ -1,5 +1,5 @@
 {
-	"name": "WASMTemplate",
+	"name": "wasm-template",
 	"version": "0.1.0",
 	"description": "",
 	"main": "index.js",
@@ -8,7 +8,11 @@
 		"dev": "npm run build && nodemon",
 		"test": "mocha -r ts-node/register test/**/*.ts",
 		"build": "npm run clean && tsc && ./scripts/build.sh",
-		"clean": "rimraf ./build && rimraf ./dist"
+		"clean": "rimraf ./build && rimraf ./dist",
+		"docker": "./scripts/createDocker.sh $npm_package_name:$npm_package_version",
+		"docker:build": "./scripts/createDocker.sh $npm_package_name:$npm_package_version",
+		"docker:start": "./scripts/runDocker.sh $npm_package_name:$npm_package_version",
+		"docker:test": "./scripts/testDocker.sh $npm_package_name-test:$npm_package_version && ./scripts/runTestDocker.sh $npm_package_name-test:$npm_package_version"
 	},
 	"keywords": [
 		"template"

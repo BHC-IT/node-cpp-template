@@ -5,20 +5,19 @@
 │   ├── base.cpp -> base() function
 │   ├── base.h -> export base() to global scope
 │   └── index.cpp -> expose base() function for nodejs via napi
-├── binding.gyp -> configuration file for node-gyp
 ├── bindings //contain .ts file that wrap from cpp
 │   └── base.ts -> wrap base addon for as a ts module
-├── nodemon.json -> configuration file for nodemon
-├── package.json -> configuration file for npm
-├── README.md
 ├── scripts // scripts to use the project
-│   └── build.sh -> build the cpp files of the project
+│   ├── build.sh -> build the cpp files of the project
+│   ├── createDocker.sh -> create docker image of the project
+│   ├── runDocker.sh -> create container based on current image
+│   ├── runTestDocker.sh -> create container of a test image and destroy it after used
+│   └── testDocker.sh -> create test image
 ├── src // source file for the project in .ts
 │   └── index.ts -> entry point of the bundle
 ├── test // unitary test
 │   ├── base.cpp.test.ts -> test for base() funtion
 │   └── index.test.ts -> test of the entrypoint
-├── tsconfig.json -> configuration file for typescript
 ├── typings // type test file
 │   ├── globals
 │   │   └── mocha
@@ -29,6 +28,13 @@
 │       └── chai
 │           ├── index.d.ts
 │           └── typings.json
+├── binding.gyp -> configuration file for node-gyp
+├── Dockerfile -> docker configuration file used for creating the project image
+├── Dockerfile.test -> docker configuration file used for creating the test image
+├── nodemon.json -> configuration file for nodemon
+├── package.json -> configuration file for npm
+├── README.md
+├── tsconfig.json -> configuration file for typescript
 └── typings.json -> configuration file for typing
 
 ```
@@ -38,11 +44,17 @@
 
 `npm run dev`: run the project in dev mode with nodemon
 
-`npm run build`: build the project
+`npm run build`: build the project. run ./scripts/build.sh
 
 `npm run clean`: clear the project. delete `dist` && `build` path
 
 `npm run test`: launch unary test
+
+`npm run docker`: create a docker image of the project. same as `npm run docker:build`. run ./scripts/createDocker.sh
+
+`npm run docker:start`: launch a docker container based on the current version image if it exist run ./scripts/runDocker.sh
+
+`npm run docker:test`: create a docker image for unite testing purpose. create a self destructing attached container of the image. run ./scripts/testDocker.sh and ./scripts/runTestDocker.sh
 
 # Dependecies
 ```bash
