@@ -68,3 +68,22 @@ lets break that down:
 	`ts-node`: compile typescript code
 
 	`node-gyp`: compile C++ code
+
+# How to use
+
+First clone this repo and copy/move its content in another project folder
+```bash
+git clone https://github.com/BHC-IT/node-cpp-template.git
+mkdir NEW_PROJECT
+cp -rf node-cpp-template/* NEW_PROJECT/.
+```
+
+then link the folder to your remote repository
+```bash
+cd NEW_PROJECT
+git init
+git commit -m "first commit"
+git remote add origin git@github.com:AUTHOR_NAME/REPO_NAME.git
+git push -u origin master
+```
+You are now good to go with this template
