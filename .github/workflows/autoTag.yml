@@ -2,8 +2,7 @@ name: Create Tag
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master, dev ]
 
 jobs:
   build:
