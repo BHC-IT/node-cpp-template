@@ -8,7 +8,7 @@ Napi::String base_bind(const Napi::CallbackInfo& info) {
 
     // call `base` function from `base.cpp` file
     std::string str = (std::string) info[0].ToString();
-    std::string result = base( str );
+    std::string result = base(str);
 
     // return new `Napi::String` value
     return Napi::String::New(env, result);
@@ -16,7 +16,6 @@ Napi::String base_bind(const Napi::CallbackInfo& info) {
 
 // callback method when module is registered with Node.js
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
-
     // set a key on `exports` object
     exports.Set(
         Napi::String::New(env, "base"), // property name => "greetHello"
