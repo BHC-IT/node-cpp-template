@@ -27,21 +27,21 @@ SOFTWARE.
 #include "./base.h"
 
 Napi::String base_bind(const Napi::CallbackInfo& info) {
-    Napi::Env env = info.Env();
+	Napi::Env env = info.Env();
 
-    std::string str = (std::string) info[0].ToString();
-    std::string result = base(str);
+	std::string str = (std::string) info[0].ToString();
+	std::string result = base(str);
 
-    return Napi::String::New(env, result);
+	return Napi::String::New(env, result);
 }
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
-    exports.Set(
-        Napi::String::New(env, "base"),
-        Napi::Function::New(env, base_bind)
-    );
+	exports.Set(
+		Napi::String::New(env, "base"),
+		Napi::Function::New(env, base_bind)
+		);
 
-    return exports;
+	return exports;
 }
 
 NODE_API_MODULE(base, Init)
