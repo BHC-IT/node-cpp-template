@@ -2,7 +2,7 @@ name: Create Tag
 
 on:
   push:
-    branches: [ master, dev ]
+    branches: [ master ]
 
 jobs:
   build:
