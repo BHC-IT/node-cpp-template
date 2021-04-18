@@ -7,13 +7,16 @@
 		"start": "npm run build && node dist/src/index.js",
 		"dev": "npm run build && nodemon",
 		"test": "mocha -r ts-node/register test/**/*.ts",
+		"cov": "nyc npm run test",
+		"cov:html": "nyc --reporter=lcov --reporter=text-summary npm run test",
 		"build": "npm run clean && tsc && ./scripts/build.sh",
 		"clean": "rimraf ./build && rimraf ./dist",
 		"docker": "./scripts/createDocker.sh $npm_package_name:$npm_package_version",
 		"docker:build": "./scripts/createDocker.sh $npm_package_name:$npm_package_version",
 		"docker:start": "./scripts/runDocker.sh $npm_package_name:$npm_package_version",
 		"docker:test": "./scripts/testDocker.sh $npm_package_name-test:$npm_package_version && ./scripts/runTestDocker.sh $npm_package_name-test:$npm_package_version",
-		"doc": "jsdoc * -d doc"
+		"doc": "typedoc -plugin typedoc-plugin-param-names --excludePrivate --excludeInternal ./src/* --out doc",
+		"doc:internal": "typedoc -plugin typedoc-plugin-param-names --excludeInternal false ./src/* --out internal"
 	},
 	"keywords": [
 		"template"
@@ -23,20 +26,21 @@
 	"dependencies": {
 		"bindings": "^1.5.0",
 		"dotenv": "^8.2.0",
-		"node-addon-api": "^2.0.0"
+		"node-addon-api": "^3.1.0"
 	},
 	"devDependencies": {
-		"@types/chai": "^4.2.9",
-		"@types/mocha": "^7.0.1",
-		"@types/node": "^13.7.6",
-		"chai": "^4.2.0",
-		"concurrently": "^5.1.0",
-		"jsdoc": "^3.6.4",
-		"mocha": "^7.1.2",
-		"nodemon": "^2.0.2",
+		"@types/chai": "^4.2.16",
+		"@types/mocha": "^8.2.2",
+		"@types/node": "^14.14.41",
+		"chai": "^4.3.4",
+		"concurrently": "^6.0.2",
+		"mocha": "^8.3.2",
+		"nodemon": "^2.0.7",
+		"nyc": "^15.1.0",
 		"rimraf": "^3.0.2",
-		"ts-node": "^8.6.2",
-		"typescript": "^3.8.2",
+		"ts-node": "^9.1.1",
+		"typedoc": "^3.6.4",
+		"typescript": "^4.2.4",
 		"typings": "^2.1.1"
 	}
 }
